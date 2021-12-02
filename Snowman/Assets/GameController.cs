@@ -7,15 +7,10 @@ using WordGuesser;
 public class GameController : MonoBehaviour
 {
     public UnityEngine.UI.Text Message;
-    public UnityEngine.UI.Text GetWord;
-    public UnityEngine.UI.Text GetGuessedLetters;
-    public UnityEngine.UI.Text CheckGuess;
-    public UnityEngine.UI.Text TurnsLeft;
     public UnityEngine.UI.Button StartButton;
     public GameObject StartScreen;
     public GameObject PlayScreen;
     private WordGuesser.WordGame guessingGame;
-    public UnityEngine.UI.InputField PlayerGuess;
     public void StartGame()
     {
         this.guessingGame = new WordGuesser.WordGame("apple", 5);
@@ -39,21 +34,11 @@ public class GameController : MonoBehaviour
         this.StartScreen.SetActive(true);
     }
 
-    public void SubmitGuess()
-    {
-       
-       Debug.Log(this.guessingGame.CheckGuess(this.PlayerGuess.text));
-       PlayerGuess.text = string.Empty;
-       this.guessingGame.GetWord();
-       this.guessingGame.GetGuessedLetters();
-       this.guessingGame.CheckGuess();
-       int TurnsLeft;
-       TurnsLeft = this.guessingGame.GetGuessLimit() - this.guessingGame.GetIncorrectGuesses();
-       this.TurnsLeft;
-
-    }
-
 }
+
+
+
+
 
 
 
