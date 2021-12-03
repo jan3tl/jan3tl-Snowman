@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 33eb1be77c56640f1a4b99829c10d307
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Magical Snow
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9908da53919634e018098684957ff49d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

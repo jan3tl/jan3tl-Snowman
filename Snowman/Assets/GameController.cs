@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public UnityEngine.UI.Text GetGuessedLetters;
     public UnityEngine.UI.Text CheckGuess;
     public UnityEngine.UI.Text TurnsLeft;
+    public UnityEngine.UI.Text CorrectGuess;
     public UnityEngine.UI.Button StartButton;
     public GameObject StartScreen;
     public GameObject PlayScreen;
@@ -24,12 +25,19 @@ public class GameController : MonoBehaviour
     public void StartGame()
     {
         string randomWord = mySelector.GetWord();
-        //this.guessingGame = new WordGuesser.WordGame("apple", 5);
+        this.guessingGame = new WordGuesser.WordGame(randomWord, 5);
         Debug.Log(this.guessingGame.GetWord());
         Debug.Log(this.guessingGame.GetFullWord());
+        
+        GetGuessedLetters.text = this.guessingGame.GetGuessedLetters();
+        GetWord.text = this.guessingGame.GetWord();
+        CheckGuess.text = string.Empty;
 
         this.StartScreen.SetActive(false);
         this.PlayScreen.SetActive(true);
+        this.GameOver.SetActive(false);
+        this.GameWon.SetActive(false);
+    
     }
 
     public void OpenStartScreen()
@@ -38,7 +46,7 @@ public class GameController : MonoBehaviour
         this.GameOver.SetActive(false);
         this.PlayScreen.SetActive(false);
         this.StartScreen.SetActive(true);
-        
+
 
     }
 
@@ -46,27 +54,39 @@ public class GameController : MonoBehaviour
     {
         this.PlayScreen.SetActive(false);
         this.StartScreen.SetActive(true);
+        this.GameWon.SetActive(false);
+        this.GameOver.SetActive(false);
     }
 
     public void SubmitGuess()
     {
-       
-       Debug.Log(this.guessingGame.CheckGuess(this.PlayerGuess.text));
-       
-       GetGuessedLetters.text = this.guessingGame.GetGuessedLetters();
-       GetWord.text = this.guessingGame.GetWord();
-       
-       if(this.guessingGame.IsGameWon())
-       {
-           this.GameWon.SetActive(true);
-       }
-       else if (this.guessingGame.IsGameOver())
-       {
-           this.GameOver.SetActive(true);
-       }
-       
 
-       PlayerGuess.text = string.Empty;
+        CheckGuess.text = this.guessingGame.CheckGuess(this.PlayerGuess.text);
+
+        GetGuessedLetters.text = this.guessingGame.GetGuessedLetters();
+        GetWord.text = this.guessingGame.GetWord();
+
+        int remainingGuesses = this.guessingGame.GetGuessLimit() - this.guessingGame.GetIncorrectGuesses();
+        TurnsLeft.text = $"You have {remainingGuesses} guesses left.";
+
+        if (this.guessingGame.IsGameWon())
+        {
+            this.GameWon.SetActive(true);
+            this.GameOver.SetActive(false);
+            this.PlayScreen.SetActive(false);
+            this.StartScreen.SetActive(false);
+        }
+        else if (this.guessingGame.IsGameOver())
+        {
+            this.GameOver.SetActive(true);
+            this.GameWon.SetActive(false);
+            this.PlayScreen.SetActive(false);
+            this.StartScreen.SetActive(false);
+            this.CorrectGuess.text = $"The correct word was {this.guessingGame.GetFullWord()}";
+        }
+
+
+        PlayerGuess.text = string.Empty;
 
     }
 

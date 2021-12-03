@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 5f4031f7862234595a14ace65e9a21ae
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Christmas Snow
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d90c01f42e4464546a48578935e8ab25, type: 3}
+  - {fileID: 12800000, guid: 1348b8c2c574d491a997844336f6952a, type: 3}
+  - {fileID: 12800000, guid: 02b4427195fc848f988a477d8ff0bd03, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
